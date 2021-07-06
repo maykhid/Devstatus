@@ -7,6 +7,7 @@ class BaseView extends StatelessWidget {
   final Widget? body;
   final bool? resizeToAvoidBottomInsets;
   final Color backgroundColor;
+  final bool showLoading;
 
   const BaseView({
     Key? key,
@@ -14,6 +15,7 @@ class BaseView extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.resizeToAvoidBottomInsets,
     this.body,
+    this.showLoading = false,
   }) : super(key: key);
 
   @override
@@ -25,17 +27,18 @@ class BaseView extends StatelessWidget {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircularProgressIndicator(strokeWidth: 1.0,),
-                ),
-              ),
-        
+              showLoading
+                  ? slimLoading()
+                  : Container(
+                      padding: const EdgeInsets.all(8.0),
+                    ),
+
+              //
               SizedBox(
-                height:20.h,
+                height: 20.h,
               ),
+
+              //
               Center(
                 child: Container(
                   padding: padding ??
@@ -48,6 +51,18 @@ class BaseView extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Align slimLoading() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CircularProgressIndicator(
+          strokeWidth: 1.0,
         ),
       ),
     );

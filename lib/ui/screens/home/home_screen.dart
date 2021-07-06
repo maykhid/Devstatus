@@ -1,5 +1,8 @@
 import 'package:dev_stat/app/base_view.dart';
 import 'package:dev_stat/app/consts/app_colors.dart';
+import 'package:dev_stat/ui/widgets/buttons.dart';
+import 'package:dev_stat/ui/widgets/entry_text.dart';
+import 'package:dev_stat/ui/widgets/underline_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -132,29 +135,6 @@ class DevStatus extends StatelessWidget {
   }
 }
 
-class EntryText extends StatelessWidget {
-  final String text;
-  final String subtext;
-  const EntryText({
-    required this.text,
-    required this.subtext,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: '$text: ',
-        style: TextStyle(fontWeight: FontWeight.w100),
-        children: [
-          TextSpan(
-              text: '$subtext', style: TextStyle(fontWeight: FontWeight.bold)),
-        ],
-      ),
-    );
-  }
-}
 
 class CheckStatus extends StatelessWidget {
   const CheckStatus({
@@ -203,55 +183,13 @@ class CheckStatus extends StatelessWidget {
             height: 3.h,
           ),
 
-          // check status
-          InkWell(
-            onTap: () {},
-            child: Container(
-              width: double.infinity,
-              height: 7.h,
-              color: Colors.white,
-              child: Center(
-                  child: Text(
-                'Check Status',
-                style: TextStyle(
-                  color: AppColors.deepBlue,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              )),
-            ),
-          ),
+          // check status button
+          Button.flatterButton(),
+          
         ],
       ),
     );
   }
 }
 
-class UnderlinedText extends StatelessWidget {
-  final String text;
-  UnderlinedText({required this.text});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        bottom: 5, // Space between underline and text
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.white,
-            width: 0.5.w, // Underline thickness
-          ),
-        ),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w500,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
+
