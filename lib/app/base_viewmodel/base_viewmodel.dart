@@ -13,6 +13,7 @@ class BaseViewModel with ChangeNotifier {
   void changeState(ViewState newState) {
     _state = newState;
     notifyListeners();
+    print(_state);
   }
 
   bool isBusy() => (_state == ViewState.Busy);
