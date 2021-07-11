@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 class HomeScreenViewModel extends BaseViewModel {
   GitUserUseCaseImpl gitUserUseCaseImpl = GitUserUseCaseImpl();
 
+  TextEditingController usernameController = TextEditingController();
+
   // HomeScreenViewModel({required this.gitUserUseCaseImpl});
   bool _showUser = false;
 
@@ -19,10 +21,20 @@ class HomeScreenViewModel extends BaseViewModel {
   // return displayUser = false;
   // }
 
+  void validateInput(BuildContext context) {
+    if (usernameController.text.trim().isEmpty) {
+      print('Empty text field');
+    } else
+      gitDevData(context);
+  }
+
   void gitDevData(BuildContext context) async {
     changeState(ViewState.Busy);
 
-    var result = await gitUserUseCaseImpl.gitUser('Maykhid');
+    var result = await gitUserUseCaseImpl.gitUser(
+      usernameController.text.trim(),
+    );
+
     changeState(ViewState.Idle);
     result.fold((error) {
       // on error display error on screen

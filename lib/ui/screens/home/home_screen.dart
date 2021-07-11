@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dev_stat/app/base_view.dart';
 import 'package:dev_stat/app/base_viewmodel/base_viewmodel.dart';
 import 'package:dev_stat/app/consts/app_colors.dart';
@@ -72,8 +74,33 @@ class CheckStatus extends StatelessWidget {
           // enter username
           Container(
             width: double.infinity,
-            height: 7.h,
+            height: 6.h,
             color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 3.h,
+                right: 3.h,
+              ),
+              child: Center(
+                child: TextFormField(
+                  controller: model.usernameController,
+                  cursorColor: Colors.grey.shade500,
+                  cursorWidth: 0.2.w,
+                  cursorHeight: 8.h,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Colors.grey.shade500,
+                  ),
+                  decoration: new InputDecoration.collapsed(
+                    hintText: 'Enter GitHub Username',
+                    hintStyle: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
 
           SizedBox(
@@ -83,7 +110,7 @@ class CheckStatus extends StatelessWidget {
           // check status button
           Button.flatterButton(
               onTap: () async {
-                model.gitDevData(context);
+                model.validateInput(context);
               },
               load: model.isBusy()),
         ],

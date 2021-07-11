@@ -10,7 +10,7 @@ class Button {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: 7.h,
+        height: 6.h,
         color: Colors.white,
         child: Center(
           child: !load
