@@ -69,7 +69,7 @@ class GitProfileModel {
 
   static String statusInfo(GitProfileModel data) {
     if (data.publicRepos < 20) return "Upcoming Open Source Engineer";
-    if (data.publicRepos >= 20 || data.publicRepos < 50)
+    if (data.publicRepos >= 20 && data.publicRepos < 50)
       return "Junior Open Source Engineer";
     return "Senior Open Source Engineer";
   }
