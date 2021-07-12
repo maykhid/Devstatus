@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 class GitProfileModel {
   GitProfileModel({
     required this.login,
@@ -16,7 +18,7 @@ class GitProfileModel {
     required this.publicRepos,
     required this.followers,
     required this.following,
-    // required this.createdAt,
+    required this.createdAt,
   });
 
   final String login;
@@ -29,7 +31,7 @@ class GitProfileModel {
   final int publicRepos;
   final int followers;
   final int following;
-  // final DateTime createdAt;
+  final DateTime createdAt;
 
   factory GitProfileModel.fromJson(String str) =>
       GitProfileModel.fromMap(json.decode(str));
@@ -50,7 +52,7 @@ class GitProfileModel {
         publicRepos: json["public_repos"] ?? 0,
         followers: json["followers"] ?? 0,
         following: json["following"] ?? 0,
-        // createdAt: DateTime.parse(json["created_at"]),
+        createdAt: DateTime.parse(json["created_at"]),
       );
 
   static dummyMap() => {
@@ -72,5 +74,10 @@ class GitProfileModel {
     if (data.publicRepos >= 20 && data.publicRepos < 50)
       return "Junior Open Source Engineer";
     return "Senior Open Source Engineer";
+  }
+
+  static String formatDate(DateTime time) {
+    DateFormat formatter = DateFormat.yMMMMd();
+    return formatter.format(time);
   }
 }

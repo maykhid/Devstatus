@@ -126,7 +126,8 @@ class _DevInfoState extends State<DevInfo> {
                             ),
                             EntryText(
                               text: 'Joined',
-                              subtext: 'September 3rd, 2019',
+                              subtext: GitProfileModel.formatDate(
+                                  widget.data.createdAt),
                             ),
                           ],
                         ),
