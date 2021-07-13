@@ -44,10 +44,9 @@ class GitProfileModel {
         avatarUrl: json["avatar_url"] ?? '',
         name: json["name"] ?? '',
         blog: json["blog"].toString() == "" ? "Not Provided" : json["blog"],
-        location:
-            (json["location"].toString() == "" || json["location"] == null)
-                ? "Not Provided"
-                : json["location"],
+        location: json["location"].toString() == "" || json["location"] == null
+            ? "Not Provided"
+            : json["location"],
         bio: json["bio"] ?? "",
         publicRepos: json["public_repos"] ?? 0,
         followers: json["followers"] ?? 0,

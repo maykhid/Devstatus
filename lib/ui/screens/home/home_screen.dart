@@ -1,14 +1,17 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
+
 import 'package:dev_stat/app/base_view.dart';
 import 'package:dev_stat/app/base_viewmodel/base_viewmodel.dart';
 import 'package:dev_stat/app/consts/app_colors.dart';
 import 'package:dev_stat/ui/screens/home/home_screen_viewmodel.dart';
 import 'package:dev_stat/ui/widgets/buttons.dart';
+import 'package:dev_stat/ui/widgets/container_text_field.dart';
 import 'package:dev_stat/ui/widgets/underline_text.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,20 +21,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    // gitUserUseCase.getGitUser('xheghun');
     return Consumer<HomeScreenViewModel>(
-        // stream: null,
-        builder: (context, model, child) {
-      return BaseView(
-        backgroundColor: AppColors.deepBlue,
-        showLoading: model.state == ViewState.Busy,
-        body: Center(
-          // dev status
-          // child: DevStatus(),
-          child: CheckStatus(model: model),
-        ),
-      );
-    });
+      builder: (context, model, _) {
+        return BaseView(
+          backgroundColor: AppColors.deepBlue,
+          showLoading: model.state == ViewState.Busy,
+          body: Center(
+            child: CheckStatus(model: model),
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -50,58 +50,21 @@ class CheckStatus extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // dev status
-          Text(
-            'Developer Status',
-            style: TextStyle(
-                fontSize: 25.sp,
-                fontWeight: FontWeight.w700,
-                color: Colors.white),
-          ),
+          buildDevStatusText(),
 
           SizedBox(
             height: 10.h,
           ),
 
-          // check
-          UnderlinedText(
-            text: 'Check',
-          ),
+          // check text
+          buildUnderlinedText(),
 
           SizedBox(
             height: 4.h,
           ),
 
           // enter username
-          Container(
-            width: double.infinity,
-            height: 6.h,
-            color: Colors.white,
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 3.h,
-                right: 3.h,
-              ),
-              child: Center(
-                child: TextFormField(
-                  controller: model.usernameController,
-                  cursorColor: Colors.grey.shade500,
-                  cursorWidth: 0.2.w,
-                  cursorHeight: 8.h,
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: Colors.grey.shade500,
-                  ),
-                  decoration: new InputDecoration.collapsed(
-                    hintText: 'Enter GitHub Username',
-                    hintStyle: TextStyle(
-                      fontSize: 12.sp,
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          buildTextFormField(),
 
           SizedBox(
             height: 3.h,
@@ -109,12 +72,34 @@ class CheckStatus extends StatelessWidget {
 
           // check status button
           Button.flatterButton(
-              onTap: () async {
-                model.validateInput(context);
-              },
-              load: model.isBusy()),
+            onTap: () async {
+              model.validateInput(context);
+            },
+            isLoading: model.isBusy(),
+          ),
         ],
       ),
+    );
+  }
+
+  ContainerTextFormField buildTextFormField() {
+    return ContainerTextFormField(
+      controller: model.usernameController,
+      hintText: 'Enter GitHub Username',
+    );
+  }
+
+  UnderlinedText buildUnderlinedText() {
+    return UnderlinedText(
+      text: 'Check',
+    );
+  }
+
+  Text buildDevStatusText() {
+    return Text(
+      'Developer Status',
+      style: TextStyle(
+          fontSize: 25.sp, fontWeight: FontWeight.w700, color: Colors.white),
     );
   }
 }

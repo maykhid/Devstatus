@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class BaseView extends StatelessWidget {
-  // final Widget body;
   final EdgeInsets? padding;
   final Widget? body;
   final bool? resizeToAvoidBottomInsets;
@@ -25,10 +24,9 @@ class BaseView extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               showLoading
-                  ? slimLoading()
+                  ? buildLoadingIndicator()
                   : Container(
                       padding: const EdgeInsets.all(8.0),
                     ),
@@ -56,7 +54,7 @@ class BaseView extends StatelessWidget {
     );
   }
 
-  Align slimLoading() {
+  Align buildLoadingIndicator() {
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
