@@ -28,7 +28,7 @@ class BaseView extends StatelessWidget {
               showLoading
                   ? buildLoadingIndicator()
                   : Container(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(30.0),
                     ),
 
               //

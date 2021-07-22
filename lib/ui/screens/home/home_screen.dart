@@ -58,7 +58,7 @@ class CheckStatus extends StatelessWidget {
           buildDevStatusText(),
 
           SizedBox(
-            height: 10.h,
+            height: 8.h,
           ),
 
           // check text
@@ -103,7 +103,7 @@ class CheckStatus extends StatelessWidget {
     return Text(
       'Developer Status',
       style: TextStyle(
-          fontSize: 25.sp, fontWeight: FontWeight.w700, color: Colors.white),
+          fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white),
     );
   }
 }
