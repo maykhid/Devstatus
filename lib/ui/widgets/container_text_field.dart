@@ -15,7 +15,7 @@ class ContainerTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 6.h,
+      height: 5.h,
       color: Colors.white,
       child: Padding(
         padding: EdgeInsets.only(

@@ -12,7 +12,7 @@ class Button {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: 6.h,
+        height: 5.h,
         color: Colors.white,
         child: Center(
           child: !isLoading

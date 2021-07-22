@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:dev_stat/core/services/connectivity/network_connectivity.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -21,13 +22,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeScreenViewModel>(
-      builder: (context, model, _) {
+    return Consumer2<HomeScreenViewModel, NetworkConnectivity>(
+      builder: (context, model, model2, _) {
         return BaseView(
           backgroundColor: AppColors.deepBlue,
           showLoading: model.state == ViewState.Busy,
           body: Center(
-            child: CheckStatus(model: model),
+            child: CheckStatus(
+              model: model,
+              model2: model2,
+            ),
           ),
         );
       },
@@ -37,8 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class CheckStatus extends StatelessWidget {
   final HomeScreenViewModel model;
+  final NetworkConnectivity model2;
 
-  CheckStatus({required this.model});
+  CheckStatus({required this.model, required this.model2});
 
   @override
   Widget build(BuildContext context) {
@@ -59,21 +64,20 @@ class CheckStatus extends StatelessWidget {
           // check text
           buildUnderlinedText(),
 
-          SizedBox(
-            height: 4.h,
-          ),
+          (model.displayMessanger)
+              ? MessangerWidget(message: model.message)
+              : Container(),
 
           // enter username
-          buildTextFormField(),
-
-          SizedBox(
-            height: 3.h,
+          Padding(
+            padding: EdgeInsets.only(top: 3.h, bottom: 3.h),
+            child: buildTextFormField(),
           ),
 
           // check status button
           Button.flatterButton(
             onTap: () async {
-              model.validateInput(context);
+              model.validateInput(context, model2);
             },
             isLoading: model.isBusy(),
           ),
@@ -100,6 +104,45 @@ class CheckStatus extends StatelessWidget {
       'Developer Status',
       style: TextStyle(
           fontSize: 25.sp, fontWeight: FontWeight.w700, color: Colors.white),
+    );
+  }
+}
+
+class MessangerWidget extends StatelessWidget {
+  const MessangerWidget({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
+
+  final String message;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 3.h,
+      ),
+      child: Container(
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.only(left: 3.w),
+            child: Text(
+              message,
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+            ),
+          ),
+        ),
+        width: MediaQuery.of(context).size.width,
+        height: 5.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(5),
+            bottom: Radius.circular(5),
+          ),
+          border: Border.all(color: Colors.blueAccent),
+        ),
+      ),
     );
   }
 }
