@@ -11,3 +11,9 @@ OR
 From Android Studio/IntelliJ: Click Packages get in the action ribbon at the top of pubspec.yaml.
 
 From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
+
+## Screenshots
+
+![Screenshot - 1](/lib/app/screenshots/screenshot_1.png?raw=true "Title")
+
+![Screenshot - 2](/lib/app/screenshots/screenshot_2.png?raw=true "Title")
