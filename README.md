@@ -46,11 +46,11 @@
 
 ## :dart: About ##
 This project provides a medium to review developers' GitHub account by inputting their GitHub handle.
-
+<!-- 
 ## :sparkles: Features ##
 
 :heavy_check_mark: Provides realtime translation service for over 90+ languages.\
-:heavy_check_mark: Clipboard feature to ease copying translated results.
+:heavy_check_mark: Clipboard feature to ease copying translated results. -->
 <!-- :heavy_check_mark: Feature 3; -->
 
 ## :rocket: Technologies ##
@@ -82,8 +82,10 @@ From Android Studio/IntelliJ: Click Packages get in the action ribbon at the top
 From VS Code: Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
 ```
 
- 
-<!-- 
+<h4 align="center"> 
+	🚧  DevStatus for web on the way 🚧
+</h4> 
+
 ## :memo: License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file. -->
