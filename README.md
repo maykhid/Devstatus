@@ -86,10 +86,16 @@ From VS Code: Click Get Packages located in right side of the action ribbon at t
 	🚧  DevStatus for web on the way 🚧
 </h4> 
 
+## 🖼️: Screenshots ##
+<p float="left">
+  <img src= "https://user-images.githubusercontent.com/54851623/197095445-dea46518-216a-42e5-a6d6-78286970be99.png" width="320" height="700" />
+  <img src="https://user-images.githubusercontent.com/54851623/197095679-b089e24a-f6a7-4c5d-9329-64dcf7c0bf7d.png" width="320" height="700"/> 
+<!--   <img src="/img3.png" width="100" /> -->
+</p>
+
 ## :memo: License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file. -->
-
 
 Made with :heart: by <a href="https://github.com/maykhid" target="_blank">maykhid</a>
 
