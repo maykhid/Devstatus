@@ -1,3 +1,5 @@
+
+<img src= "https://user-images.githubusercontent.com/54851623/197095445-dea46518-216a-42e5-a6d6-78286970be99.png" width="100" height="300" />
 <!-- <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Word Translator" />
  -->
@@ -5,8 +7,6 @@
 
   <!-- <a href="https://word_translator.netlify.app">Demo</a> -->
 </div>
-
-<img src= "https://user-images.githubusercontent.com/54851623/197095445-dea46518-216a-42e5-a6d6-78286970be99.png" width="0" height="0" />
 
 <h1 align="center">DevStatus</h1>
 
