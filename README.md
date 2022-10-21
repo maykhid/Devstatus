@@ -6,6 +6,8 @@
   <!-- <a href="https://word_translator.netlify.app">Demo</a> -->
 </div>
 
+<img src= "https://user-images.githubusercontent.com/54851623/197095445-dea46518-216a-42e5-a6d6-78286970be99.png" width="0" height="0" />
+
 <h1 align="center">DevStatus</h1>
 
 <p align="center">
